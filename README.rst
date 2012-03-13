@@ -1,0 +1,81 @@
+
+SIPDrop - Record VoIP Phone Calls via Packet Capture
+----------------------------------------------------
+
+sipdrop.pl - Record Internet phone calls via packet capture.
+
+Description
+-----------
+
+sipdrop.pl is a tool that can be used for recording VoIP phone calls that
+are set up via the Session Initiation Protocal (SIP).  It will provide
+a discrete audio file for each call.  SIPdrop also listens for 
+instructions on a seperate UDP control channel so you can provide
+additional control, such as selective recording by IP address, etc.
+
+REQUIREMENTS
+------------
+
+Since sipdrop uses packet capture it needs to run in an environment with
+access to packets between the target systems.  Typically this means
+either on a mirrored switch port or on a machine configured as a bridge.
+Perhaps ARP-cache poisoning will work for you if the above configuration
+is hard to achieve. 
+
+WARNING
+-------
+Recording phone conversations without consent and/or without an audible
+or other notification is likely illegeal if you are in the U.S. This 
+software was not written to assist any illegeal purpose. 
+
+OVERVIEW
+--------
+
+sipdrop.pl functions by listening to network traffic using Perl packet 
+capture libraries with a filter for UDP.  If the source or destination port 
+is the standard port 5060 for SIP, sipdrop will parse the packet for all 
+header fields and return this as a data structure for further examination.
+If the 'Content-type' is 'sdp' (Session Description Protocol) then that body
+is further parsed and the SDP information is included in the returned data
+structure.
+
+If the SIP data structure contains a SIP 'INVITE' containing SDP connection
+data, then sipdrop will add an entry in an internal hash 'ctab' (call table) 
+keyed on the SIP 'Call-Id' (cid) field and named 'remote'.  If later a packet 
+arrives with a '200 OK' response that is a reply to an INVITE and contains a 
+matching SIP sequence field 'CSeq' then a reference to this SIP data
+structure is added to the same 'ctab' table keyed again on 'Call-Id' but
+called 'local'.
+
+At this point a check is made that the data from both of these structures
+representing a SIP INVITE (remote) and a SIP '200 OK' reply to that invite
+have matching 'CSeq' numbers.  If so a new pair of keys is created from
+the IP address and SDP media data field, the 'm' field:
+
+::
+
+    m=audio 17394 RTP/AVP 0 8 4 18
+
+These keys are a combination of IP address combined with the RTP audio port 
+specified in the SDP media field; the two values concatenated by ':', and these
+keys are placed into another internal hash called 'bykey'.
+
+Later if a UDP packet arrives with a key (IPaddress+RTP audio port pair) 
+matching something a key in the 'bykey' hash, then this is raw audio for
+a SIP call and it is saved in a file that is named <Call-Id>@<IPAddress>.
+If it the first packet, a new file is created and an entry is added to
+another internal data hash called 'active' that represents calls being
+actively recorded. Subsequent packets are appended to the file.
+
+Later if a SIP packet arrives with a 'BYE' message, the file is closed and
+entries are removed from the 'active' hash.
+
+CONTROL
+-------
+
+The existing code is in transition.  Currently it will record all calls, but
+code is nearly in place to select which calls to record. Since sipdrop
+already sees every UDP packet, the control mechanism is a UDP client that
+sends commands to another configurable port.  'record <IP>' will put
+and entry in an internal hash called 'record'.  Then sipdrop will only
+record calls that come from a requested IP address. 
