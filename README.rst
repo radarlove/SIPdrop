@@ -13,7 +13,7 @@ a discrete audio file for each call.  SIPdrop also listens for
 instructions on a seperate UDP control channel so you can provide
 additional control, such as selective recording by IP address, etc.
 
-REQUIREMENTS
+Requirements
 ------------
 
 Since sipdrop uses packet capture it needs to run in an environment with
@@ -22,13 +22,13 @@ either on a mirrored switch port or on a machine configured as a bridge.
 Perhaps ARP-cache poisoning will work for you if the above configuration
 is hard to achieve. 
 
-WARNING
+Warning
 -------
 Recording phone conversations without consent and/or without an audible
 or other notification is likely illegeal if you are in the U.S. This 
 software was not written to assist any illegeal purpose. 
 
-OVERVIEW
+Overview
 --------
 
 sipdrop.pl functions by listening to network traffic using Perl packet 
@@ -70,8 +70,8 @@ actively recorded. Subsequent packets are appended to the file.
 Later if a SIP packet arrives with a 'BYE' message, the file is closed and
 entries are removed from the 'active' hash.
 
-CONTROL
--------
+Control Channel
+---------------
 
 The existing code is in transition.  Currently it will record all calls, but
 code is nearly in place to select which calls to record. Since sipdrop
