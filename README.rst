@@ -26,7 +26,7 @@ Warning
 -------
 Recording phone conversations without consent and/or without an audible
 or other notification is likely illegeal if you are in the U.S. This 
-software was not written to assist any illegeal purpose. 
+software was not written to assist any illegal purpose. 
 
 Overview
 --------
