@@ -55,8 +55,8 @@ the IP address and SDP media data field, the 'm' field:
     m=audio 17394 RTP/AVP 0 8 4 18
 
 These keys are a combination of IP address combined with the RTP audio port 
-specified in the SDP media field; the two values concatenated by ':', and these
-keys are placed into another internal hash called 'bykey'.
+(17394) specified in the SDP media field; the two values concatenated 
+by ':', and these keys are placed into another internal hash called 'bykey'.
 
 Later if a UDP packet arrives with a key (IPaddress+RTP audio port pair) 
 matching something a key in the 'bykey' hash, then this is raw audio for
