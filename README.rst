@@ -1,8 +1,8 @@
 
 SIPDrop - Record VoIP Phone Calls via Packet Capture
 ----------------------------------------------------
+(c) 2012, Richard Liming, All Rights Reserved
 
-sipdrop.pl - Record Internet phone calls via packet capture.
 
 Description
 -----------
@@ -18,12 +18,9 @@ Requirements
 
 Since sipdrop uses packet capture it needs to run in an environment with
 access to packets between the target systems.  Typically this means
-either on a mirrored switch port or on a machine configured as a bridge.
-Perhaps ARP-cache poisoning will work for you if the above configuration
-is hard to achieve. 
+either on a mirrored switch port or on a machine acting as a bridge,
+on a central SIP server, or perhaps through ARP manipulation.
 
-Warning
--------
 Recording phone conversations without consent and/or without an audible
 or other notification is likely illegal if you are in the U.S. This 
 software was not written to assist any illegal purpose. 
