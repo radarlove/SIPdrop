@@ -22,9 +22,12 @@ access to packets between the target systems.  Typically this means
 either on a mirrored switch port or on a machine acting as a bridge,
 on a central SIP server, or perhaps through ARP manipulation.
 
-Recording phone conversations without consent and/or without an audible
-or other notification is likely illegal if you are in the U.S. This 
-software was not written to assist any illegal purpose. 
+There are legal ramifications to recording phone conversations.  
+It is your responsibilty to understand any applicable laws before 
+using this software.  Typically, you must notify the parties that
+they are about to be recorded and/or provide audible tones to 
+indicate recording is in progress.
+
 
 Overview
 --------

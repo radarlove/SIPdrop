@@ -25,6 +25,13 @@
  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF 
  THE POSSIBILITY OF SUCH DAMAGE.
+
+ There are legal ramifications to recording phone conversations.  
+ It is your responsibilty to understand any applicable laws before
+ using this software.  Typically, you must notify the parties that
+ they are about to be recorded and/or provide audible tones to
+ indicate recording is in progress.
+
 ';
 
 # sipdrop.pl -  Record SIP/RTP phone calls.
