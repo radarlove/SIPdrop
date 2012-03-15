@@ -19,8 +19,9 @@ Requirements
 
 Since SIPdrop uses packet capture it needs to run in an environment with
 access to packets between the target systems.  Typically this means
-either on a mirrored switch port or on a machine acting as a bridge,
-on a central SIP server, or perhaps through ARP manipulation.
+running it while connected to a switch mirror port, or on a machine 
+with a bridged interface, on a central SIP server, or perhaps through ARP 
+manipulation.
 
 Overview
 --------
