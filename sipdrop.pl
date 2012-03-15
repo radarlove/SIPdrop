@@ -4,6 +4,9 @@
  Copyright (c) 2012, Richard Liming
  All rights reserved.
 
+ * RTP packet disassembly code is (c) Steffen Ullrich, copied from the Perl
+   Net::SIP::Simple::RTP module.
+
  Redistribution and use in source and binary forms, with or without 
  modification, are permitted provided that the following conditions 
  are met:
@@ -31,6 +34,7 @@
  using this software.  Typically, you must notify the parties that
  they are about to be recorded and/or provide audible tones to
  indicate recording is in progress.
+
 
 ';
 
@@ -159,6 +163,9 @@ sub process_pkt {
             print "key match: $rkey, record\n";
             $rh = $bykey{$rkey}->{cid};
             print "rh = $rh\n";
+
+                # Ripped this RTP packet decoding stuff from Net::SIP::Simple::RTP,
+                # I believe this code is (C) Steffen Ullrich, Steffen_Ullrich@genua.de
 
                 my ($buf) = $udp_obj->{data};
                 my ($vpxcc,$mpt,$seq,$tstamp,$ssrc) = unpack( 'CCnNN',substr( $buf,0,12,'' ));
