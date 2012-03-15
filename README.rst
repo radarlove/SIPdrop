@@ -11,8 +11,12 @@ Description
 SIPdrop.pl is a tool that can be used for recording VoIP phone calls that
 are set up via the Session Initiation Protocal (SIP).  It will provide
 a discrete audio file for each call.  SIPdrop also listens for 
-instructions on a seperate UDP control channel so you can provide
-additional control, such as selective recording by IP address, etc.
+instructions on a seperate UDP control channel, and a small UDP control
+client is included that takes your command input and forwards them to
+SIPdrop.  Although four commands are parsed and understood by SIPdrop,
+only 'quit' works, which is used to stop SIPdrop.  So, right now
+SIPdrop records every call.  Selective call recording is a few lines
+of code away, but how to implement it is described below.
 
 Requirements
 ------------
