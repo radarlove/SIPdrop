@@ -185,6 +185,8 @@ sub process_pkt {
                 my $padding = $vpxcc & 0x20 ? unpack( 'C', substr($buf,-1,1)) : 0;
                 my $payload = $padding ? substr( $buf,0,length($buf)-$padding ): $buf;
 
+                # end RTP decode chunk, Houston we have the payload.  Thanks Steffen!
+
             if (! $active{$rh}) {
                 open($rh,">$rh") or die "Can't open $rh for write\n";
                 binmode($rh);
