@@ -145,8 +145,12 @@ followed by an '@' symbol and then the IP address::
 
 Audio commands that worked for me, were ::
 
-   - play    :  aplay -r 8000 -c 1 -f MU_LAW -t raw de2bc7b402cbf8cd\@192.168.1.179
-   - convert :  ffmpeg -ar 8000 -ac 1 -f mulaw -i de2bc7b402cbf8cd\@192.168.1.179 test.wav
-   -         :  sox/bin/sox -t ul -c 1 -r 8000 de2bc7b402cbf8cd\@192.30.168.179.raw test.wav
+   To play:
 
+            aplay -r 8000 -c 1 -f MU_LAW -t raw de2bc7b402cbf8cd\@192.168.1.179
+
+   To convert:
+
+            ffmpeg -ar 8000 -ac 1 -f mulaw -i de2bc7b402cbf8cd\@192.168.1.179 test.wav
+            sox/bin/sox -t ul -c 1 -r 8000 de2bc7b402cbf8cd\@192.30.168.179.raw test.wav
 
