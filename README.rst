@@ -2,7 +2,7 @@
 SIPDrop - Record VoIP Phone Calls via Packet Capture
 ----------------------------------------------------
 
-Copyright (c) 2012, Richard Liming, All Rights Reserved
+Copyright (c) 2012, Richard Liming
 
 
 Description
