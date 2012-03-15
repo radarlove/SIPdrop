@@ -133,5 +133,20 @@ Do this IP filtering after the check to see if it is a packet from the
 control server, soos ya don't block your own commands like 'quit'
 from being seen ;)
 
+Recordings
+----------
+
+My experience was with g.711 ulaw, YMMV.
+
+The recorded audio files are named by the SIP cid of the remote end,
+followed by an '@' symbol and then the IP address::
+
+    de2bc7b402cbf8cd\@192.168.1.179
+
+Audio commands that worked for me, were ::
+
+   - play -  aplay -r 8000 -c 1 -f MU_LAW -t raw de2bc7b402cbf8cd\@192.168.1.179
+   - convert -  ffmpeg -ar 8000 -ac 1 -f mulaw -i de2bc7b402cbf8cd\@192.168.1.179 test.wav
+   - sox/bin/sox -t ul -c 1 -r 8000 de2bc7b402cbf8cd\@192.30.168.179.raw test.wav
 
 
